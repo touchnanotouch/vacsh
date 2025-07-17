@@ -1,5 +1,5 @@
-data/resume.txt
-data/vacancies.csv
+resumes/resume.txt
+vacancies/vacancies.csv
 
 __pycache__/
 
