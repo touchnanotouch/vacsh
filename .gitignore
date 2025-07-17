@@ -1,8 +1,9 @@
-resumes/resume.txt
-vacancies/vacancies.csv
+data/
 
 __pycache__/
 
 .env
 
 debug_vacancy.html
+
+.vscode

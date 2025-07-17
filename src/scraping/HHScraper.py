@@ -1,17 +1,13 @@
 import csv
 import re
-from typing import List, Dict, Optional
 
 import undetected_chromedriver as uc
+
+from typing import List, Dict, Optional
 from bs4 import BeautifulSoup
 
 
 class HHScraper:
-    """
-    Scraper class for extracting vacancy data from hh.ru.
-    Encapsulates all scraping logic and provides methods for data export.
-    """
-
     SEARCH_URL = "https://hh.ru/search/vacancy"
 
     def __init__(
@@ -22,21 +18,21 @@ class HHScraper:
     ):
         self.query = query
         self.max_pages = max_pages
+
         self.chrome_options = chrome_options or self._default_chrome_options()
+
         self.vacancies: List[Dict[str, str]] = []
 
     def _default_chrome_options(self) -> uc.ChromeOptions:
         options = uc.ChromeOptions()
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-blink-features=AutomationControlled")
+
         return options
 
     def scrape(self) -> List[Dict[str, str]]:
-        """
-        Scrapes vacancies from hh.ru based on the initialized parameters.
-        Returns a list of dictionaries containing vacancy data.
-        """
         self.vacancies.clear()
+
         for page in range(self.max_pages):
             url = (
                 f"{self.SEARCH_URL}?text={self.query}"
@@ -48,16 +44,32 @@ class HHScraper:
                 driver.get(url)
                 soup = BeautifulSoup(driver.page_source, "html.parser")
 
-            cards = soup.find_all("div", attrs={"data-qa": "vacancy-serp__vacancy"})
+            cards = soup.find_all(
+                "div",
+                attrs={"data-qa": "vacancy-serp__vacancy"}
+            )
 
             for card in cards:
-                title_elem = card.find("span", attrs={"data-qa": "serp-item__title-text"})
-                address_elem = card.find("span", attrs={"data-qa": "vacancy-serp__vacancy-address"})
-                company_elem = card.find("span", attrs={"data-qa": "vacancy-serp__vacancy-employer-text"})
-                experience_elem = card.find(
-                    "span", attrs={"data-qa": re.compile(r"vacancy-serp__vacancy-work-experience")}
+                title_elem = card.find(
+                    "span",
+                    attrs={"data-qa": "serp-item__title-text"}
                 )
-                link_elem = card.find("a", attrs={"data-qa": "serp-item__title"})
+                address_elem = card.find(
+                    "span",
+                    attrs={"data-qa": "vacancy-serp__vacancy-address"}
+                )
+                company_elem = card.find(
+                    "span",
+                    attrs={"data-qa": "vacancy-serp__vacancy-employer-text"}
+                )
+                experience_elem = card.find(
+                    "span",
+                    attrs={"data-qa": re.compile(r"vacancy-serp__vacancy-work-experience")}
+                )
+                link_elem = card.find(
+                    "a",
+                    attrs={"data-qa": "serp-item__title"}
+                )
 
                 self.vacancies.append(
                     {
@@ -68,12 +80,10 @@ class HHScraper:
                         "link": link_elem["href"].split("?")[0].strip() if link_elem else "#",
                     }
                 )
+
         return self.vacancies
 
-    def save_to_csv(self, filename: str = "data/vacancies.csv") -> None:
-        """
-        Saves the scraped vacancies to a CSV file.
-        """
+    def save_to_csv(self, filename: str = "data/vacancies/vacancies.csv") -> None:
         if not self.vacancies:
             raise ValueError("No vacancies to save. Run scrape() first.")
 

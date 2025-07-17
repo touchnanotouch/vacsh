@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вакансии и резюме — AI помощник</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container-xl py-4">
+    <h1 class="mb-4 text-center">AI помощник для поиска работы</h1>
+    <div class="row gx-5">
+        <!-- Stepper + Навигация -->
+        <aside class="col-md-4 col-lg-3 mb-4">
+            <div class="steps-vertical mb-4">
+                <div class="step" id="stepper-0">1. Резюме</div>
+                <div class="step" id="stepper-1">2. Параметры</div>
+                <div class="step" id="stepper-2">3. Подтверждение</div>
+                <div class="step" id="stepper-3">4. Вакансии</div>
+                <div class="step" id="stepper-4">5. Отклики</div>
+            </div>
+            <div id="alert" style="display:none;"></div>
+            <div id="loading" class="mb-3" style="display:none;">Загрузка...</div>
+            <div class="step-nav d-flex flex-column gap-2 mt-4">
+                <button id="step-back" class="btn btn-outline-secondary">Назад</button>
+                <button id="step-next" class="btn btn-primary">Далее</button>
+            </div>
+        </aside>
+        <!-- Основной контент -->
+        <main class="col-md-8 col-lg-9">
+            <!-- Step 1: Загрузка и разбор резюме -->
+            <div id="step-0" class="step-section">
+                <form id="resumeForm" class="mb-4">
+                    <div class="mb-3">
+                        <label for="resumeFile" class="form-label">Загрузите резюме (.txt)</label>
+                        <input class="form-control" type="file" id="resumeFile" name="file" accept=".txt" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Загрузить и разобрать</button>
+                </form>
+            </div>
+            <!-- Step 2: Параметры поиска + редактирование -->
+            <div id="step-1" class="step-section" style="display:none;">
+                <div class="mb-3">
+                    <label class="form-label">Информация о пользователе</label>
+                    <div id="resume-edit-table"></div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <label for="searchQuery" class="form-label">Желаемая специальность или вакансия</label>
+                        <input class="form-control" id="searchQuery" placeholder="Например, Python разработчик">
+                    </div>
+                </div>
+            </div>
+            <!-- Step 3: Подтверждение данных -->
+            <div id="step-2" class="step-section" style="display:none;">
+                <div class="mb-3">
+                    <label class="form-label">Проверьте информацию о себе</label>
+                    <div id="confirm-table"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Параметры поиска</label>
+                    <div id="confirm-search"></div>
+                </div>
+            </div>
+            <!-- Step 4: Вакансии -->
+            <div id="step-3" class="step-section" style="display:none;">
+                <div class="mb-3">
+                    <input class="form-control" id="vacancy-search" placeholder="Поиск по вакансиям...">
+                </div>
+                <div id="vacancy-list" class="row g-3"></div>
+            </div>
+            <!-- Step 5: Отклики -->
+            <div id="step-4" class="step-section" style="display:none;">
+                <div id="ai-letters"></div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="/static/main.js"></script>
+</body>
+</html>
