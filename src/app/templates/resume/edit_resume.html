@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование резюме — Vacsh{% endblock %}
+
+{% block content %}
+<h2>Редактирование резюме</h2>
+<ul>
+    <li><b>Должность:</b> {{ resume_data.position }}</li>
+    <li><b>Зарплата:</b> {{ resume_data.salary }}</li>
+    <li><b>Специализации:</b> {{ resume_data.specializations|join(', ') }}</li>
+    <li><b>Занятость:</b> {{ resume_data.employment }}</li>
+    <li><b>График работы:</b> {{ resume_data.schedule }}</li>
+    <li><b>Образование:</b> {{ resume_data.education }}</li>
+    <li><b>Навыки:</b> {{ resume_data.skills }}</li>
+    <li><b>Языки:</b> {{ resume_data.languages }}</li>
+    <li><b>О себе:</b> {{ resume_data.about }}</li>
+</ul>
+<form method="post" action="/resume/edit">
+    <button type="submit" class="btn btn-primary">Сохранить и продолжить</button>
+</form>
+{% endblock %}

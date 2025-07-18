@@ -1,0 +1,100 @@
+.center-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+}
+.central-block {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+    padding: 40px 36px 32px 36px;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+.central-block h1 {
+    margin: 0 0 8px 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2563eb;
+}
+.central-block .description {
+    color: #444;
+    font-size: 1.08rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin: 0 0 8px 0;
+}
+.button-group a {
+    width: 100%;
+    text-align: center;
+    font-size: 1.05rem;
+    padding: 10px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.button-group .btn-primary {
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+}
+.button-group .btn-primary:hover {
+    background: #1d4ed8;
+}
+.button-group .btn-secondary {
+    background: #f1f5f9;
+    color: #2563eb;
+    font-weight: 500;
+}
+.button-group .btn-secondary:hover {
+    background: #e0e7ef;
+}
+.button-group .btn-link {
+    background: none;
+    color: #64748b;
+    font-weight: 400;
+    padding: 0;
+}
+.button-group .btn-link:hover {
+    text-decoration: underline;
+    color: #2563eb;
+}
+.sites-block {
+    width: 100%;
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 18px 16px 10px 16px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+.sites-block h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.08rem;
+    color: #2563eb;
+}
+.sites-block ul {
+    padding-left: 18px;
+    margin: 0;
+    color: #2563eb;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.sites-block li {
+    margin-bottom: 4px;
+}
+.sites-block span {
+    font-weight: 400;
+    font-size: 0.98rem;
+}

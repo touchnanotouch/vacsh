@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Настройка поиска — Vacsh{% endblock %}
+
+{% block content %}
+<div class="center-container">
+    <div class="central-block">
+        <a href="/" class="back-link" style="align-self: flex-start; text-decoration: none; color: #3b82a3; font-size: 1.05rem; margin-bottom: 4px;">
+            &#8592; Назад
+        </a>
+        <h2>Настройка поиска вакансий</h2>
+        <form method="post" action="/vacancies/search_settings" class="search-settings-form">
+            <div class="form-group">
+                <label>Выберите сайт для поиска:</label><br>
+                <input type="radio" id="hh" name="site" value="hh" checked>
+                <label for="hh">hh.ru</label>
+                <input type="radio" id="habr" name="site" value="habr" disabled>
+                <label for="habr">career.habr.com <span style="color: #888; font-size: 0.9em;">(в разработке)</span></label>
+            </div>
+            <div class="form-group">
+                <label for="search_query">Ключевые слова или должность:</label><br>
+                <input type="text" id="search_query" name="search_query" placeholder="Например, Python Developer" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Найти вакансии</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

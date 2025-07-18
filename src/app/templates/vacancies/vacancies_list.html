@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Список вакансий — Vacsh{% endblock %}
+
+{% block content %}
+<h2>Подходящие вакансии</h2>
+<ul>
+    {% for vacancy in vacancies %}
+    <li>
+        <b>{{ vacancy.title }}</b> — {{ vacancy.company }}, {{ vacancy.address }}<br>
+        <span>Опыт: {{ vacancy.experience }}</span><br>
+        <a href="{{ vacancy.link }}" target="_blank">Подробнее</a>
+    </li>
+    {% else %}
+    <li>Вакансии не найдены.</li>
+    {% endfor %}
+</ul>
+<a href="/vacancies/search_settings" class="btn btn-secondary">Новый поиск</a>
+{% endblock %}

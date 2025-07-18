@@ -1,4 +1,3 @@
-import csv
 import re
 
 import undetected_chromedriver as uc
@@ -18,16 +17,13 @@ class HHScraper:
     ):
         self.query = query
         self.max_pages = max_pages
-
         self.chrome_options = chrome_options or self._default_chrome_options()
-
         self.vacancies: List[Dict[str, str]] = []
 
     def _default_chrome_options(self) -> uc.ChromeOptions:
         options = uc.ChromeOptions()
         options.add_argument("--disable-notifications")
         options.add_argument("--disable-blink-features=AutomationControlled")
-
         return options
 
     def scrape(self) -> List[Dict[str, str]]:
@@ -39,16 +35,13 @@ class HHScraper:
                 if page == 0
                 else f"{self.SEARCH_URL}?text={self.query}&page={page}"
             )
-
             with uc.Chrome(options=self.chrome_options, headless=True) as driver:
                 driver.get(url)
                 soup = BeautifulSoup(driver.page_source, "html.parser")
-
             cards = soup.find_all(
                 "div",
                 attrs={"data-qa": "vacancy-serp__vacancy"}
             )
-
             for card in cards:
                 title_elem = card.find(
                     "span",
@@ -70,7 +63,6 @@ class HHScraper:
                     "a",
                     attrs={"data-qa": "serp-item__title"}
                 )
-
                 self.vacancies.append(
                     {
                         "title": title_elem.text.strip() if title_elem else "Нет названия",
@@ -82,14 +74,3 @@ class HHScraper:
                 )
 
         return self.vacancies
-
-    def save_to_csv(self, filename: str = "data/vacancies/vacancies.csv") -> None:
-        if not self.vacancies:
-            raise ValueError("No vacancies to save. Run scrape() first.")
-
-        with open(filename, "w", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(
-                file, fieldnames=["title", "address", "company", "experience", "link"]
-            )
-            writer.writeheader()
-            writer.writerows(self.vacancies)
