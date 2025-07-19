@@ -1,8 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap');
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-family: 'Rubik', system-ui, Arial, sans-serif;
+}
+
+.logo-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #5a7fa6;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(59,130,163,0.08);
+    background: #f6f7f9;
+    border-radius: 16px;
+    padding: 8px 24px 8px 18px;
+    margin: 0 0 8px 0;
+}
+
+.logo-accent-c {
+    color: #6ec6f1;
+}
+.logo-accent-h {
+    color: #f46363;
 }
 
 .center-container {
@@ -10,8 +32,9 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f5f6fa;
+    background: #f6f7f9;
 }
+
 .central-block {
     background: #fff;
     border-radius: 22px;
@@ -29,7 +52,7 @@ html, body {
     margin: 0 0 8px 0;
     font-size: 2.2rem;
     font-weight: 700;
-    color: #3b82a3;
+    color: #5a7fa6;
     letter-spacing: 0.2px;
     text-align: center;
 }
@@ -48,7 +71,7 @@ html, body {
 
 .btn-link-accent {
     border-radius: 7px;
-    background: #f5f6fa !important;
+    background: #e6eaf1 !important;
     font-weight: 500 !important;
     text-decoration: none !important;
     font-size: 1.01rem !important;
@@ -58,9 +81,8 @@ html, body {
 }
 
 .btn-link-accent:hover {
-    background: #e3eaf3 !important;
-    border-color: #3b82a3;
-    color: #178a4c !important;
+    background: #d3d8e0 !important;
+    border-color: #5a7fa6;
     text-decoration: none !important;
 }
 
@@ -75,9 +97,9 @@ html, body {
     display: inline-block;
     padding: 5px 16px 5px 12px;
     font-size: 1.01rem;
-    color: #178a4c;
-    background: #f5f6fa;
-    border: 1.2px solid #22c55e;
+    color: #4fa37e;
+    background: #f6f7f9;
+    border: 1.2px solid #4fa37e;
     border-radius: 7px;
     font-weight: 500;
     text-decoration: none;
@@ -88,18 +110,77 @@ html, body {
 }
 
 .back-btn:hover {
-    background: #e3eaf3;
-    border-color: #3b82a3;
-    color: #178a4c;
-    box-shadow: 0 2px 8px 0 rgba(34,197,94,0.08);
+    border-color: #5a7fa6;
+    color: #4fa37e;
+    box-shadow: 0 2px 8px 0 rgba(79,163,126,0.08);
     text-decoration: none;
 }
 
 .central-block .description {
-    color: #2d3748;
-    font-size: 1.08rem;
+    color: #466184;
+    font-size: 1.13rem;
     text-align: center;
     margin-bottom: 0;
+    background: linear-gradient(90deg, #e6eaf1 0%, #f6f7f9 100%);
+    border-radius: 12px;
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px 0 rgba(90,127,166,0.07);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: box-shadow 0.2s;
+    margin-top: 4px;
+    display: inline-block;
+    animation: fadeInDesc 0.7s ease;
+}
+
+.central-block h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #5a7fa6;
+    letter-spacing: 0.2px;
+    text-align: center;
+    background: #f6f7f9;
+    border-radius: 12px;
+    padding: 7px 0 7px 0;
+    box-shadow: 0 2px 8px rgba(59,130,163,0.04);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.form-group label {
+    color: #466184;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.form-group input[type="file"] {
+    background: #e6eaf1;
+    border: 1.2px solid #c3cfe2;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 1.01rem;
+    color: #466184;
+    transition: border 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input[type="file"]:focus {
+    border-color: #5a7fa6;
+    outline: none;
+}
+
+form .btn-primary {
+    margin-top: 8px;
 }
 
 .button-group {
@@ -121,40 +202,40 @@ html, body {
 }
 
 .button-group .btn-primary {
-    background: #3b82a3;
+    background: #5a7fa6;
     color: #fff;
     font-weight: 600;
 }
 
 .button-group .btn-primary:hover {
-    background: #326b8c;
+    background: #466184;
 }
 
 .button-group .btn-secondary {
-    background: #e3eaf3;
-    color: #3b82a3;
+    background: #e6eaf1;
+    color: #5a7fa6;
     font-weight: 500;
 }
 
 .button-group .btn-secondary:hover {
-    background: #d1dbe6;
+    background: #d3d8e0;
 }
 
 .button-group .btn-link {
     background: none;
-    color: #5a6b7b;
+    color: #6b7280;
     font-weight: 400;
     padding: 0;
 }
 
 .button-group .btn-link:hover {
     text-decoration: underline;
-    color: #3b82a3;
+    color: #5a7fa6;
 }
 
 .sites-block {
     width: 100%;
-    background: #e9ecf3;
+    background: #e6eaf1;
     border-radius: 10px;
     padding: 18px 16px 10px 16px;
     margin-top: 8px;
@@ -164,13 +245,13 @@ html, body {
 .sites-block h3 {
     margin: 0 0 8px 0;
     font-size: 1.08rem;
-    color: #3b82a3;
+    color: #5a7fa6;
 }
 
 .sites-block ul {
     padding-left: 18px;
     margin: 0;
-    color: #3b82a3;
+    color: #5a7fa6;
     font-weight: 500;
     font-size: 1rem;
 }
@@ -182,5 +263,5 @@ html, body {
 .sites-block span {
     font-weight: 400;
     font-size: 0.98rem;
-    color: #5a6b7b;
+    color: #6b7280;
 }

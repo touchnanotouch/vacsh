@@ -3,17 +3,21 @@
 {% block title %}Список вакансий — Vacsh{% endblock %}
 
 {% block content %}
-<h2>Подходящие вакансии</h2>
-<ul>
-    {% for vacancy in vacancies %}
-    <li>
-        <b>{{ vacancy.title }}</b> — {{ vacancy.company }}, {{ vacancy.address }}<br>
-        <span>Опыт: {{ vacancy.experience }}</span><br>
-        <a href="{{ vacancy.link }}" target="_blank">Подробнее</a>
-    </li>
-    {% else %}
-    <li>Вакансии не найдены.</li>
-    {% endfor %}
-</ul>
-<a href="/vacancies/search_settings" class="btn btn-secondary">Новый поиск</a>
+<div class="center-container">
+    <div class="central-block">
+        <a href="/vacancies/search_settings" class="back-btn">&#8592; Новый поиск</a>
+        <h2>Подходящие вакансии</h2>
+        <ul class="vacancy-list">
+            {% for vacancy in vacancies %}
+            <li>
+                <b>{{ vacancy.title }}</b> — {{ vacancy.company }}, {{ vacancy.address }}<br>
+                <span>Опыт: {{ vacancy.experience }}</span><br>
+                <a href="{{ vacancy.link }}" target="_blank" class="btn btn-link btn-link-accent">Подробнее</a>
+            </li>
+            {% else %}
+            <li>Вакансии не найдены.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

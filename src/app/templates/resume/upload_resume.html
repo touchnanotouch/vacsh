@@ -5,17 +5,20 @@
 {% block content %}
 <div class="center-container">
     <div class="central-block">
-        <a href="/" class="back-link" style="align-self: flex-start; text-decoration: none; color: #3b82a3; font-size: 1.05rem; margin-bottom: 4px;">
-            &#8592; Назад
-        </a>
-        <h2>Загрузка резюме</h2>
-        <form method="post" action="/resume/upload" enctype="multipart/form-data">
+        <a href="/" class="back-btn">&#8592; Назад</a>
+        <form method="post" action="/resume/upload" enctype="multipart/form-data" id="resume-upload-form">
             <div class="form-group">
                 <label for="resume_file">Выберите файл резюме (.txt):</label>
                 <input type="file" id="resume_file" name="file" accept=".txt" required>
             </div>
-            <button type="submit" class="btn btn-primary">Загрузить</button>
         </form>
     </div>
 </div>
+<script>
+    document.getElementById('resume_file').addEventListener('change', function() {
+        if (this.files.length > 0) {
+            document.getElementById('resume-upload-form').submit();
+        }
+    });
+</script>
 {% endblock %}

@@ -3,22 +3,24 @@
 {% block title %}Подтверждение резюме — Vacsh{% endblock %}
 
 {% block content %}
-<h2>Подтверждение резюме</h2>
-<ul>
-    <li><b>Должность:</b> {{ resume_data.position }}</li>
-    <li><b>Зарплата:</b> {{ resume_data.salary }}</li>
-    <li><b>Специализации:</b> {{ resume_data.specializations|join(', ') }}</li>
-    <li><b>Занятость:</b> {{ resume_data.employment }}</li>
-    <li><b>График работы:</b> {{ resume_data.schedule }}</li>
-    <li><b>Образование:</b> {{ resume_data.education }}</li>
-    <li><b>Навыки:</b> {{ resume_data.skills }}</li>
-    <li><b>Языки:</b> {{ resume_data.languages }}</li>
-    <li><b>О себе:</b> {{ resume_data.about }}</li>
-</ul>
-<form method="post" action="/resume/confirm">
-    <button type="submit" class="btn btn-primary">Подтвердить и перейти к поиск��</button>
-</form>
-<form method="get" action="/resume/edit" style="margin-top:10px;">
-    <button type="submit" class="btn btn-secondary">Назад к редактированию</button>
-</form>
+<div class="center-container">
+    <div class="central-block">
+        <a href="/resume/edit" class="back-btn">&#8592; Назад к редактированию</a>
+        <h2>Подтверждение резюме</h2>
+        <ul class="resume-list">
+            <li><b>Должность:</b> {{ resume_data.position }}</li>
+            <li><b>Зарплата:</b> {{ resume_data.salary }}</li>
+            <li><b>Специализации:</b> {{ resume_data.specializations|join(', ') }}</li>
+            <li><b>Занятость:</b> {{ resume_data.employment }}</li>
+            <li><b>График работы:</b> {{ resume_data.schedule }}</li>
+            <li><b>Образование:</b> {{ resume_data.education }}</li>
+            <li><b>Навыки:</b> {{ resume_data.skills }}</li>
+            <li><b>Языки:</b> {{ resume_data.languages }}</li>
+            <li><b>О себе:</b> {{ resume_data.about }}</li>
+        </ul>
+        <form method="post" action="/resume/confirm">
+            <button type="submit" class="btn btn-primary btn-large">Подтвердить и перейти к поиску</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
